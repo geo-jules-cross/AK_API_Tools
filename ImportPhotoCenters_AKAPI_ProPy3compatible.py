@@ -52,8 +52,6 @@ def main():
     else:
         importVertical()
 
-    arcpy.Delete_management(pntTmp)
-
     if makePts:
         arcpy.XYTableToPoint_management(tv,fcName,'CENTER_LON','CENTER_LAT',"",sr)
         
@@ -164,7 +162,9 @@ def importVertical():
                         
     arcpy.AddMessage('update cursor completed...')
     print('update cursor completed...')
-    del uCursor, sCursor                    
+    del uCursor, sCursor
+
+    arcpy.Delete_management(pntTmp)
 
 def importOblique():
     # Load exported Metashape photo centers text file to pandas dataframe
@@ -235,7 +235,9 @@ def importOblique():
                         
     arcpy.AddMessage('update cursor completed...')
     print('update cursor completed...')
-    del uCursor, sCursor 
+    del uCursor, sCursor
+    
+    arcpy.Delete_management(pntTmp)
 
 # Function to compute coordinates x4,y4 along the prolongation of
 # the line from x1,y1 to x2,y2 where p1, p2, p3 are equally spaced
