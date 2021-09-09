@@ -24,22 +24,23 @@ SQLstr=arcpy.GetParameterAsText(2)
 fgdbTmp=arcpy.GetParameterAsText(3)
 fcName=arcpy.GetParameterAsText(4) # "APSI_Footprints_ProjectCode"
 obliqueFlag=arcpy.GetParameterAsText(5)
-missingFramesFlag=arcpy.GetParameterAsText(6)
-fcPolyName=arcpy.GetParameterAsText(7)
+scaleFlag=arcpy.GetParameterAsText(6)
+missingFramesFlag=arcpy.GetParameterAsText(7)
+fcPolyName=arcpy.GetParameterAsText(8)
 
 #Get the path of the location of the file, so that the tool works if the files are moved.
 tbPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Alaska API Tools.tbx')
 arcpy.ImportToolbox(tbPath)
 
 #Run the two tools
-arcpy.ImportPhotoCenters_AKAPITools(textFilePath, APSI_Source, SQLstr, fgdbTmp, fcName, obliqueFlag, missingFramesFlag)
+arcpy.ImportPhotoCenters_AKAPITools(textFilePath, APSI_Source, SQLstr, fgdbTmp, fcName, obliqueFlag, scaleFlag, missingFramesFlag)
 
 aprx = arcpy.mp.ArcGISProject("CURRENT")
 m = aprx.activeMap
 out_fc_lyr = m.listLayers()[0]
 ref_lyrx = "Air_Photo_Center.lyrx" 
 arcpy.ApplySymbologyFromLayer_management(out_fc_lyr, ref_lyrx)
-arcpy.SetParameterAsText(8, out_fc_lyr)
+arcpy.SetParameterAsText(9, out_fc_lyr)
 
 arcpy.GenerateFootprints(APSI_Source, SQLstr, fgdbTmp, fcPolyName)
 
@@ -48,4 +49,4 @@ m = aprx.activeMap
 out_fc_lyr = m.listLayers()[0]
 ref_lyrx = "Air_Photo_Footprints.lyrx" 
 arcpy.ApplySymbologyFromLayer_management(out_fc_lyr, ref_lyrx)
-arcpy.SetParameterAsText(9, out_fc_lyr)
+arcpy.SetParameterAsText(10, out_fc_lyr)

@@ -26,7 +26,8 @@ SQLstr=arcpy.GetParameterAsText(2)
 fgdbTmp=arcpy.GetParameterAsText(3)
 fcName=arcpy.GetParameterAsText(4)  # "APSI_Footprints_ProjectCode"
 obliqueFlag=arcpy.GetParameterAsText(5)
-missingFramesFlag=arcpy.GetParameterAsText(6)
+scaleFlag=arcpy.GetParameterAsText(6)
+missingFramesFlag=arcpy.GetParameterAsText(7)
 
 if len(fcName)>0:
     makePts = True
@@ -151,7 +152,9 @@ def importVertical():
                         # Check if project scale (S) is missing and estimate
                         # S = fl/pH: focal length (fl) and photo height (pH)
                         # display scale as denominator e.g. 1:20000 = 20000
-                        if (urow[3] is None or urow[3] == 0):
+                        if scaleFlag == 'false':
+                            urow[3] = urow[3]
+                        elif(urow[3] is None or urow[3] == 0):
                             arcpy.AddMessage('estimating scale...')
                             print('estimating scale...')
                             urow[3] = int((srow[3]*39.36)/float(urow[4]))
@@ -383,7 +386,7 @@ def LoadLayer():
         ref_lyrx = "Air_Photo_Center.lyrx" 
         out_fc_lyr = m.listLayers()[0]
         arcpy.ApplySymbologyFromLayer_management(out_fc_lyr, ref_lyrx)
-        arcpy.SetParameterAsText(7, out_fc_lyr)
+        arcpy.SetParameterAsText(8, out_fc_lyr)
     except Exception as e:
         arcpy.AddWarning(e)
         arcpy.AddWarning("!New Photo Centers Feature Class could not be added to your current map.")
