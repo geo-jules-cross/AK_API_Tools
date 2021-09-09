@@ -380,10 +380,10 @@ def LoadLayer():
         aprx = arcpy.mp.ArcGISProject("CURRENT")
         m = aprx.activeMap
         m.addDataFromPath(os.path.join(fgdbTmp,fcName))
-        ref_lyrx = r"T:\OC\GEOSpSection\NATL\Aerial_Imagery\_gis\APSI\AK\_Updating_API_Table\Air_Photo_Center.lyrx" 
+        ref_lyrx = "Air_Photo_Center.lyrx" 
         out_fc_lyr = m.listLayers()[0]
         arcpy.ApplySymbologyFromLayer_management(out_fc_lyr, ref_lyrx)
-        arcpy.SetParameterAsText(6, out_fc_lyr)
+        arcpy.SetParameterAsText(7, out_fc_lyr)
     except Exception as e:
         arcpy.AddWarning(e)
         arcpy.AddWarning("!New Photo Centers Feature Class could not be added to your current map.")

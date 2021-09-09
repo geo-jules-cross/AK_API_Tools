@@ -41,7 +41,7 @@ ref_lyrx = "Air_Photo_Center.lyrx"
 arcpy.ApplySymbologyFromLayer_management(out_fc_lyr, ref_lyrx)
 arcpy.SetParameterAsText(8, out_fc_lyr)
 
-arcpy.GenerateFootprintOfAPSIPhotoCenters_AKAPITools(APSI_Source, SQLstr, fgdbTmp, fcPolyName)
+arcpy.GenerateFootprints(APSI_Source, SQLstr, fgdbTmp, fcPolyName)
 
 aprx = arcpy.mp.ArcGISProject("CURRENT")
 m = aprx.activeMap

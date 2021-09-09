@@ -526,7 +526,7 @@ def LoadLayer():
         m.addDataFromPath(os.path.join(fgdbTmp,footprntfn))
 ##            lyrnm = arcpy.mp.Layer(footprntfn)
 ##            m.addLayer(lyrnm, "TOP")
-        ref_lyrx = r"T:\OC\GEOSpSection\NATL\Aerial_Imagery\_gis\APSI\AK\_Updating_API_Table\Air_Photo_Footprints.lyrx" 
+        ref_lyrx = "Air_Photo_Footprints.lyrx" 
         out_fc_lyr = m.listLayers()[0]
         arcpy.ApplySymbologyFromLayer_management(out_fc_lyr, ref_lyrx)
         arcpy.SetParameterAsText(4, out_fc_lyr)
