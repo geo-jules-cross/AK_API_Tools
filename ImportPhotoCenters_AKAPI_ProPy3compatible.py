@@ -233,7 +233,7 @@ def importOblique():
                         urow[1] = srow[1]
                         urow[2] = srow[2]
                         if (srow[3] is None):
-                            continue
+                            pass #continue
                         else:
                             urow[3] = srow[3]
                         uCursor.updateRow(urow)
