@@ -116,7 +116,7 @@ def importVertical():
                                    z,
                                    h))
                 print('AR' + str(msPhotoCenters.PhotoID[i][0:13]).upper())
-                arcpy.AddMessage(('AR' + str(msPhotoCenters.PhotoID[i][0:13]).upper())
+                arcpy.AddMessage(('AR' + str(msPhotoCenters.PhotoID[i][0:13]).upper()))
             else:
                 # Add Photo ID to missing list
                 missing = missing + ['AR' + str(msPhotoCenters.PhotoID[i][0:-4])]
@@ -212,7 +212,7 @@ def importOblique():
                                y,
                                d))
             print('AR' + str(msPhotoCenters.PhotoID[i][0:13]).upper())
-            arcpy.AddMessage(('AR' + str(msPhotoCenters.PhotoID[i][0:13]).upper())
+            arcpy.AddMessage(('AR' + str(msPhotoCenters.PhotoID[i][0:13]).upper()))
 
         arcpy.AddMessage('insert cursor completed...')
         print('insert cursor completed...')
