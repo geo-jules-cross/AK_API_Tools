@@ -62,7 +62,7 @@ def importVertical():
     # Load exported Metashape photo centers text file to pandas dataframe
     names = ['PhotoID', 'X', 'Y', 'Z', 'X_est', 'Y_est', 'Z_est','H_est','H_g']
     cols = ['PhotoID', 'X_est', 'Y_est', 'Z_est', 'H_est']
-    msPhotoCenters = pd.read_csv(textFilePath, sep='\t',header=1, 
+    msPhotoCenters = pd.read_csv(textFilePath, sep='\t', comment='#', #header=1,
                                 names=names, usecols=cols, dtype={'PhotoID': 'str'})
 
     # Create a feature class in which to store photo centers
